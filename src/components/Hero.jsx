@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import Magnetic from './Magnetic';
 import { ArrowUpRight, Globe, Layers, Code, Palette } from 'lucide-react';
 import gsap from 'gsap';
+import esterlinAvatar from '../assets/esterlin-avatar.png';
 
 export default function Hero() {
   const firstTextRef = useRef(null);
@@ -76,9 +77,9 @@ export default function Hero() {
       <div className="relative my-8 px-6 sm:px-16 max-w-6xl mx-auto w-full z-10">
         <div className="relative h-[320px] sm:h-[450px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl group bg-[#141517]">
           <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1600&q=80"
+            src={esterlinAvatar}
             alt="Esterlin Murillo Mena"
-            className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out opacity-85"
+            className="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-700 ease-out"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1C1D20] via-transparent to-transparent"></div>
           

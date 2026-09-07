@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Magnetic from './Magnetic';
 import { ArrowUpRight, Copy, Check, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import esterlinAvatar from '../assets/esterlin-avatar.png';
 
 export default function Footer() {
   const [copied, setCopied] = useState(false);
@@ -29,9 +30,9 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full overflow-hidden border border-white/20">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80"
+                  src={esterlinAvatar}
                   alt="Esterlin Murillo Mena"
-                  className="w-full h-full object-cover object-top grayscale"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
               <span className="text-xl sm:text-2xl font-syne font-semibold text-gray-300">
