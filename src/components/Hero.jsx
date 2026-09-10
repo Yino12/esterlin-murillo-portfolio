@@ -39,7 +39,7 @@ export default function Hero() {
         gsap.set(firstTextRef.current, { xPercent: xPercent });
         gsap.set(secondTextRef.current, { xPercent: xPercent });
       }
-      xPercent += 0.08 * direction;
+      xPercent += 0.045 * direction;
       animationFrameId = requestAnimationFrame(animateMarquee);
     };
 
