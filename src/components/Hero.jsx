@@ -78,7 +78,7 @@ export default function Hero() {
           <img
             src={esterlinAvatar}
             alt="Esterlin Murillo Mena"
-            className="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-700 ease-out"
+            className="w-full h-full object-contain object-center group-hover:scale-105 transition-all duration-700 ease-out"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent"></div>
 
