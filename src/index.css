@@ -4,15 +4,16 @@
 
 @layer base {
   body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #1C1D20;
-    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    background-color: #181818;
+    color: #CEEEC6;
     margin: 0;
     padding: 0;
   }
 
-  h1, h2, h3, .font-syne {
-    font-family: 'Syne', sans-serif;
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Anton', sans-serif;
+    letter-spacing: -0.01em;
   }
 }
 
@@ -42,14 +43,14 @@ html.lenis, html.lenis body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #1C1D20;
+  background: #181818;
 }
 ::-webkit-scrollbar-thumb {
-  background: #333438;
+  background: #00554B;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #455CE9;
+  background: #00CF78;
 }
 
 /* Magnetic Button Hover Glow */
@@ -62,4 +63,10 @@ html.lenis, html.lenis body {
   display: flex;
   white-space: nowrap;
   will-change: transform;
+}
+
+/* Subtle grain texture used behind dark sections, echoing a paper/print feel */
+.grain-bg {
+  background-image: radial-gradient(rgba(206, 238, 198, 0.035) 1px, transparent 1px);
+  background-size: 3px 3px;
 }

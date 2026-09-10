@@ -67,10 +67,10 @@ export default function NavMenu({ isOpen, setIsOpen }) {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="fixed inset-0 z-30 bg-[#141517] text-white flex flex-col justify-between px-8 sm:px-20 pt-32 pb-12 overflow-hidden"
+          className="fixed inset-0 z-30 bg-dark text-mint flex flex-col justify-between px-8 sm:px-20 pt-32 pb-12 overflow-hidden"
         >
           {/* Menu Header Label */}
-          <div className="border-b border-gray-800 pb-4 text-xs font-mono text-gray-500 uppercase tracking-widest">
+          <div className="border-b border-darkBorder pb-4 text-xs font-mono text-mint/40 uppercase tracking-widest">
             Navegación • Esterlin Murillo Mena
           </div>
 
@@ -88,9 +88,9 @@ export default function NavMenu({ isOpen, setIsOpen }) {
                   <a
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className="group flex items-center gap-4 text-4xl sm:text-7xl font-syne font-extrabold hover:text-[#455CE9] transition-colors"
+                    className="group flex items-center gap-4 text-4xl sm:text-7xl font-display uppercase tracking-tight hover:text-brand transition-colors"
                   >
-                    <span className="text-sm font-mono text-gray-600 group-hover:text-[#455CE9] transition-colors">
+                    <span className="text-sm font-mono text-mint/30 group-hover:text-brand transition-colors">
                       0{i + 1}
                     </span>
                     <span className="group-hover:translate-x-3 transition-transform duration-300">
@@ -102,9 +102,9 @@ export default function NavMenu({ isOpen, setIsOpen }) {
             </nav>
 
             {/* Social Links & Info Column */}
-            <div className="flex flex-col justify-end space-y-8 border-t md:border-t-0 md:border-l border-gray-800 pt-8 md:pt-0 md:pl-16">
+            <div className="flex flex-col justify-end space-y-8 border-t md:border-t-0 md:border-l border-darkBorder pt-8 md:pt-0 md:pl-16">
               <div>
-                <h4 className="text-xs font-mono text-gray-500 uppercase tracking-wider mb-4">
+                <h4 className="text-xs font-mono text-mint/40 uppercase tracking-wider mb-4">
                   Enlaces Directos
                 </h4>
                 <div className="flex flex-wrap gap-4 text-sm font-medium">
@@ -114,7 +114,7 @@ export default function NavMenu({ isOpen, setIsOpen }) {
                         href={social.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="px-4 py-2 rounded-full border border-white/10 hover:border-[#455CE9] hover:bg-[#455CE9] transition-all inline-flex items-center gap-1.5"
+                        className="px-4 py-2 rounded-full border border-brand/10 hover:border-brand hover:bg-brand hover:text-ink transition-all inline-flex items-center gap-1.5"
                       >
                         <span>{social.name}</span>
                         <ExternalLink className="w-3 h-3 opacity-70" />
@@ -125,29 +125,29 @@ export default function NavMenu({ isOpen, setIsOpen }) {
               </div>
 
               <div>
-                <h4 className="text-xs font-mono text-gray-500 uppercase tracking-wider mb-2">
+                <h4 className="text-xs font-mono text-mint/40 uppercase tracking-wider mb-2">
                   Contacto Directo
                 </h4>
                 <a
                   href="mailto:esterlinmurillomena@gmail.com"
-                  className="text-lg font-medium text-gray-300 hover:text-white underline decoration-[#455CE9] decoration-2 underline-offset-4 block"
+                  className="text-lg font-medium text-mint/70 hover:text-mint underline decoration-brand decoration-2 underline-offset-4 block"
                 >
                   esterlinmurillomena@gmail.com
                 </a>
-                <p className="text-sm font-mono text-gray-400 mt-1">Tel: +57 300 534 7784</p>
+                <p className="text-sm font-mono text-mint/40 mt-1">Tel: +57 300 534 7784</p>
               </div>
             </div>
           </div>
 
           {/* Bottom Footer Details */}
-          <div className="flex items-center justify-between text-xs font-mono text-gray-500 pt-6 border-t border-gray-800">
+          <div className="flex items-center justify-between text-xs font-mono text-mint/40 pt-6 border-t border-darkBorder">
             <span>© 2026 ESTERLIN MURILLO MENA</span>
             <span>DISEÑADOR GRÁFICO Y WEB • COLOMBIA</span>
           </div>
 
           {/* SVG Morphing Curve */}
           {dimensions.width > 0 && (
-            <svg className="absolute bottom-0 left-0 w-full h-[300px] translate-y-full pointer-events-none fill-[#141517]">
+            <svg className="absolute bottom-0 left-0 w-full h-[300px] translate-y-full pointer-events-none fill-[#181818]">
               <motion.path
                 variants={curveVariants}
                 initial="initial"

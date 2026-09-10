@@ -47,7 +47,7 @@ export default function ProjectModal({ modal, projects }) {
         variants={scaleAnimation}
         initial="initial"
         animate={active ? "open" : "closed"}
-        className="absolute z-30 h-[280px] w-[340px] sm:h-[320px] sm:w-[400px] rounded-2xl overflow-hidden pointer-events-none shadow-2xl bg-[#141517] border border-white/10"
+        className="absolute z-30 h-[280px] w-[340px] sm:h-[320px] sm:w-[400px] rounded-2xl overflow-hidden pointer-events-none shadow-2xl bg-darkCard border border-brand/20"
       >
         <div
           style={{ top: index * -100 + "%" }}
@@ -75,7 +75,7 @@ export default function ProjectModal({ modal, projects }) {
         variants={scaleAnimation}
         initial="initial"
         animate={active ? "open" : "closed"}
-        className="absolute z-40 w-20 h-20 rounded-full bg-[#455CE9] text-white flex items-center justify-center font-bold text-xs pointer-events-none shadow-xl border border-white/20"
+        className="absolute z-40 w-20 h-20 rounded-full bg-brand text-ink flex items-center justify-center font-bold text-xs pointer-events-none shadow-xl border border-ink/20"
       >
       </motion.div>
 
@@ -84,7 +84,7 @@ export default function ProjectModal({ modal, projects }) {
         variants={scaleAnimation}
         initial="initial"
         animate={active ? "open" : "closed"}
-        className="absolute z-50 text-white font-syne font-bold text-xs uppercase tracking-wider pointer-events-none"
+        className="absolute z-50 text-ink font-display text-xs uppercase tracking-wider pointer-events-none"
       >
         Ver
       </motion.div>

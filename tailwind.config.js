@@ -7,20 +7,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        darkBg: '#1C1D20',
-        darkCard: '#141517',
-        darkHover: '#292A2D',
-        accentBlue: '#455CE9',
-        lightGray: '#E9E9E9',
-        mutedGray: '#999999',
+        brand: '#00CF78',
+        brandDark: '#00A863',
+        ink: '#00554B',
+        mint: '#CEEEC6',
+        mintDark: '#B4E0A8',
+        dark: '#181818',
+        darkCard: '#212320',
+        darkBorder: '#333630',
+        coral: '#FF6B55',
       },
       fontFamily: {
-        sans: ['Neue Montreal', 'Inter', 'Helvetica Neue', 'sans-serif'],
-        display: ['Syne', 'Neue Montreal', 'Inter', 'sans-serif'],
+        sans: ['Inter', 'Helvetica Neue', 'sans-serif'],
+        display: ['Anton', 'Inter', 'sans-serif'],
+        hand: ['Caveat', 'cursive'],
       },
       animation: {
         'marquee': 'marquee 25s linear infinite',
         'marquee-reverse': 'marquee-reverse 25s linear infinite',
+        'marquee-fast': 'marquee 14s linear infinite',
       },
       keyframes: {
         marquee: {
