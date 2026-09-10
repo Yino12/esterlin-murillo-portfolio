@@ -8,9 +8,61 @@ export default function Hero() {
   const firstTextRef = useRef(null);
   const secondTextRef = useRef(null);
   const sliderRef = useRef(null);
+  const headingRef = useRef(null);
+  const lineRefs = useRef([]);
 
   let xPercent = 0;
   let direction = -1;
+
+  // Fit each headline line exactly to the width of its container
+  useEffect(() => {
+    const BASE_FONT = 100;
+    const MIN_FONT = 24;
+    const MAX_FONT = 260;
+    let rafId;
+
+    // scrollWidth is unreliable for overflow-visible, nowrap block elements
+    // (it can report the box width instead of the true content width), so
+    // measure the actual rendered text extent with a Range instead.
+    const measureTextWidth = (el) => {
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      return range.getBoundingClientRect().width;
+    };
+
+    const fitLines = () => {
+      const heading = headingRef.current;
+      if (!heading) return;
+      const containerWidth = heading.getBoundingClientRect().width;
+      if (!containerWidth) return;
+
+      lineRefs.current.forEach((line) => {
+        if (!line) return;
+        line.style.fontSize = `${BASE_FONT}px`;
+        const naturalWidth = measureTextWidth(line);
+        if (!naturalWidth) return;
+        const scale = containerWidth / naturalWidth;
+        const newSize = Math.max(MIN_FONT, Math.min(MAX_FONT, BASE_FONT * scale));
+        line.style.fontSize = `${newSize}px`;
+      });
+    };
+
+    const handleResize = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(fitLines);
+    };
+
+    fitLines();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(fitLines);
+    }
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
 
   useEffect(() => {
     let animationFrameId;
@@ -64,10 +116,10 @@ export default function Hero() {
             <span>Diseñador Gráfico &amp; Web · Colombia</span>
           </div>
 
-          <h1 className="font-display text-[clamp(2.75rem,7vw,6rem)] uppercase tracking-tight leading-[0.9]">
-            Esterlin <br />
-            Murillo <br />
-            <span className="text-brand">Diseño &amp; Web <span className="whitespace-nowrap">- IA</span></span>
+          <h1 ref={headingRef} className="font-display uppercase tracking-tight leading-[0.9]">
+            <span ref={(el) => (lineRefs.current[0] = el)} className="block whitespace-nowrap">Esterlin</span>
+            <span ref={(el) => (lineRefs.current[1] = el)} className="block whitespace-nowrap">Murillo</span>
+            <span ref={(el) => (lineRefs.current[2] = el)} className="block whitespace-nowrap text-brand">Diseño &amp; Web - IA</span>
           </h1>
         </div>
 
