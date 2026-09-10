@@ -22,5 +22,11 @@ export const services = [
     title: 'Imagen Corporativa & Papelería',
     description: 'Creación de marca e identidad corporativa integral, papelería comercial (tarjetas, flyers, catálogos) y piezas gráficas publicitarias de alto impacto.',
     items: ['Branding & Identidad', 'Papelería Comercial', 'Photoshop & Illustrator', 'Diseño Editorial']
+  },
+  {
+    number: '05',
+    title: 'Diseño & Desarrollo con IA',
+    description: 'Integración de inteligencia artificial en flujos de trabajo de diseño gráfico, multimedia y programación: generación y edición de imágenes, video y asistencia de código con las herramientas más avanzadas del mercado.',
+    items: ['Claude & ChatGPT', 'Google Flow', 'Nano Banana 2', 'Magnific']
   }
 ];
