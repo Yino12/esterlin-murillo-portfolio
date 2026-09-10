@@ -9,16 +9,17 @@ export default function Hero() {
   const secondTextRef = useRef(null);
   const sliderRef = useRef(null);
   const headingRef = useRef(null);
-  const lineRefs = useRef([]);
+  const iaLineRef = useRef(null);
 
   let xPercent = 0;
   let direction = -1;
 
-  // Fit each headline line exactly to the width of its container
+  // Fit only the "Diseño & Web - IA" line exactly to the width of its container
+  // (the "Esterlin" / "Murillo" lines keep their fixed responsive size)
   useEffect(() => {
     const BASE_FONT = 100;
     const MIN_FONT = 24;
-    const MAX_FONT = 260;
+    const MAX_FONT = 96;
     let rafId;
 
     // scrollWidth is unreliable for overflow-visible, nowrap block elements
@@ -30,31 +31,29 @@ export default function Hero() {
       return range.getBoundingClientRect().width;
     };
 
-    const fitLines = () => {
+    const fitLine = () => {
       const heading = headingRef.current;
-      if (!heading) return;
+      const line = iaLineRef.current;
+      if (!heading || !line) return;
       const containerWidth = heading.getBoundingClientRect().width;
       if (!containerWidth) return;
 
-      lineRefs.current.forEach((line) => {
-        if (!line) return;
-        line.style.fontSize = `${BASE_FONT}px`;
-        const naturalWidth = measureTextWidth(line);
-        if (!naturalWidth) return;
-        const scale = containerWidth / naturalWidth;
-        const newSize = Math.max(MIN_FONT, Math.min(MAX_FONT, BASE_FONT * scale));
-        line.style.fontSize = `${newSize}px`;
-      });
+      line.style.fontSize = `${BASE_FONT}px`;
+      const naturalWidth = measureTextWidth(line);
+      if (!naturalWidth) return;
+      const scale = containerWidth / naturalWidth;
+      const newSize = Math.max(MIN_FONT, Math.min(MAX_FONT, BASE_FONT * scale));
+      line.style.fontSize = `${newSize}px`;
     };
 
     const handleResize = () => {
       cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(fitLines);
+      rafId = requestAnimationFrame(fitLine);
     };
 
-    fitLines();
+    fitLine();
     if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(fitLines);
+      document.fonts.ready.then(fitLine);
     }
     window.addEventListener('resize', handleResize);
 
@@ -116,10 +115,10 @@ export default function Hero() {
             <span>Diseñador Gráfico &amp; Web · Colombia</span>
           </div>
 
-          <h1 ref={headingRef} className="font-display uppercase tracking-tight leading-[0.9]">
-            <span ref={(el) => (lineRefs.current[0] = el)} className="block whitespace-nowrap">Esterlin</span>
-            <span ref={(el) => (lineRefs.current[1] = el)} className="block whitespace-nowrap">Murillo</span>
-            <span ref={(el) => (lineRefs.current[2] = el)} className="block whitespace-nowrap text-brand">Diseño &amp; Web - IA</span>
+          <h1 ref={headingRef} className="font-display text-5xl sm:text-7xl lg:text-8xl uppercase tracking-tight leading-[0.9]">
+            Esterlin <br />
+            Murillo <br />
+            <span ref={iaLineRef} className="block whitespace-nowrap text-brand">Diseño &amp; Web - IA</span>
           </h1>
         </div>
 
