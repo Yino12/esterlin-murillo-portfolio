@@ -35,6 +35,18 @@ export default function WorkSection() {
               onMouseLeave={() => setModal({ active: false, index })}
               className="group relative flex flex-col md:flex-row justify-between items-start md:items-center py-10 px-4 sm:px-8 border-b border-darkBorder cursor-pointer transition-colors duration-300 hover:bg-darkCard/50"
             >
+              {/* Static Thumbnail (mobile only — no hover on touch devices) */}
+              <div
+                className="w-full h-48 sm:h-56 rounded-2xl overflow-hidden mb-6 md:hidden"
+                style={{ backgroundColor: project.color || '#1A1C23' }}
+              >
+                <img
+                  src={project.src}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
               {/* Left Title & Tags */}
               <div className="flex items-center gap-6 sm:gap-12">
                 <span className="text-sm font-mono text-mint/40 group-hover:text-brand transition-colors">
