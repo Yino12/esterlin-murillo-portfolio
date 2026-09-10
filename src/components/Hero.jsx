@@ -73,7 +73,7 @@ export default function Hero() {
 
         <div className="flex flex-col items-start md:items-end justify-between space-y-6">
           <p className="text-mint/60 text-base sm:text-lg font-normal max-w-md leading-relaxed text-left md:text-right">
-            Especialista en imagen corporativa, desarrollo web en WordPress/WooCommerce, diseño UI de interfaces y producción publicitaria en gran formato.
+            Especialista en imagen corporativa, desarrollo web en WordPress/WooCommerce, diseño UI de interfaces, producción publicitaria en gran formato y soluciones potenciadas con IA.
           </p>
 
           <Magnetic>
@@ -104,8 +104,8 @@ export default function Hero() {
               <p className="text-sm font-semibold text-mint">Diseñador Gráfico &amp; Dibujante Artístico</p>
             </div>
 
-            <div className="flex gap-2">
-              {['Photoshop', 'Illustrator', 'Figma', 'WordPress', 'Clip Studio'].map((tool) => (
+            <div className="flex flex-wrap justify-end gap-2 max-w-full sm:max-w-md">
+              {['Photoshop', 'Illustrator', 'Figma', 'WordPress', 'Clip Studio', 'Magnific', 'Google Flow', 'Google Nano Banana 2'].map((tool) => (
                 <span key={tool} className="text-xs font-mono bg-brand/10 backdrop-blur-md px-3 py-1 rounded-full border border-brand/20 text-mint">
                   {tool}
                 </span>
