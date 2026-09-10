@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Magnetic from './Magnetic';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowRight, ShoppingBag } from 'lucide-react';
+
+const navItems = [
+  { title: 'Inicio', href: '#hero' },
+  { title: 'Trabajos', href: '#work' },
+  { title: 'Sobre mí', href: '#about' },
+  { title: 'Servicios', href: '#services' },
+  { title: 'Contacto', href: '#contact' },
+];
 
 export default function Header({ isNavOpen, setIsNavOpen }) {
   const [timeStr, setTimeStr] = useState('');
@@ -12,63 +20,89 @@ export default function Header({ isNavOpen, setIsNavOpen }) {
         timeZone: 'America/Bogota',
         hour: '2-digit',
         minute: '2-digit',
-        second: '2-digit',
-        hour12: false
+        hour12: false,
       };
       setTimeStr(now.toLocaleTimeString('es-CO', options) + ' GMT-5');
     };
-
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-40 px-6 sm:px-12 py-6 flex items-center justify-between pointer-events-none">
-      {/* Brand / Logo */}
-      <Magnetic className="pointer-events-auto">
-        <a href="#hero" className="group flex items-center gap-2 text-sm font-medium text-white hover:text-gray-300 transition-colors">
-          <div className="relative flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#455CE9] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#455CE9]"></span>
+    <>
+      {/* Desktop fixed sidebar */}
+      <aside className="hidden lg:flex flex-col justify-between fixed top-0 left-0 h-screen w-72 bg-brand text-ink px-8 py-10 z-40 overflow-y-auto">
+        <div className="space-y-10">
+          <a href="#hero" className="block">
+            <p className="font-display text-3xl leading-[0.85] uppercase">
+              Esterlin<br />Murillo
+            </p>
+            <p className="mt-2 text-[11px] font-semibold tracking-[0.2em] uppercase text-ink/70">
+              Diseño Gráfico &amp; Web
+            </p>
+          </a>
+
+          <nav className="flex flex-col">
+            {navItems.map((item) => (
+              <a
+                key={item.title}
+                href={item.href}
+                className="group flex items-center justify-between py-4 border-b border-dashed border-ink/30 first:border-t first:border-dashed first:border-ink/30"
+              >
+                <span className="font-display text-2xl xl:text-3xl uppercase tracking-tight group-hover:translate-x-1.5 transition-transform duration-300">
+                  {item.title}
+                </span>
+                <span className="w-9 h-9 shrink-0 rounded-full bg-ink text-mint flex items-center justify-center border border-ink group-hover:bg-mint group-hover:text-ink transition-colors duration-300">
+                  <ArrowRight className="w-4 h-4 -rotate-45" />
+                </span>
+              </a>
+            ))}
+          </nav>
+
+          <div className="inline-flex items-center gap-2 text-[11px] font-mono font-semibold bg-ink/10 border border-ink/20 px-3 py-1.5 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-ink animate-pulse" />
+            <span>Colombia · {timeStr || '00:00:00 GMT-5'}</span>
           </div>
-          <span className="font-syne font-bold tracking-tight text-base group-hover:rotate-6 transition-transform">
-            © Code & Design by Esterlin
-          </span>
+        </div>
+
+        <div className="space-y-3">
+          <Magnetic className="block w-full">
+            <a
+              href="#work"
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-ink text-mint font-display uppercase tracking-wide text-sm hover:bg-[#00443c] transition-colors"
+            >
+              Ver Trabajos
+            </a>
+          </Magnetic>
+          <Magnetic className="block w-full">
+            <a
+              href="#contact"
+              className="flex items-center justify-center gap-2 w-full py-3.5 rounded-full bg-mint text-ink border border-ink font-display uppercase tracking-wide text-sm hover:bg-white transition-colors"
+            >
+              <ShoppingBag className="w-4 h-4" />
+              Escríbeme
+            </a>
+          </Magnetic>
+          <p className="text-center text-[11px] text-ink/60 font-medium">y hagamos algo increíble juntos</p>
+        </div>
+      </aside>
+
+      {/* Mobile top bar */}
+      <header className="lg:hidden fixed top-0 left-0 w-full z-40 flex items-center justify-between px-6 py-4 bg-brand text-ink">
+        <a href="#hero" className="font-display text-xl uppercase leading-none">
+          Esterlin<br />Murillo
         </a>
-      </Magnetic>
-
-      {/* Center Location & Live Clock (Desktop) */}
-      <div className="hidden md:flex items-center gap-4 text-xs font-mono text-gray-400 bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 pointer-events-auto">
-        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span>Colombia</span>
-        <span className="text-gray-600">|</span>
-        <span className="text-white font-semibold">{timeStr || '23:04:15 GMT-5'}</span>
-      </div>
-
-      {/* Nav Links & Magnetic Menu Trigger */}
-      <div className="flex items-center gap-8 pointer-events-auto">
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-          <Magnetic><a href="#work" className="hover:text-white transition-colors">Trabajos</a></Magnetic>
-          <Magnetic><a href="#about" className="hover:text-white transition-colors">Sobre mí</a></Magnetic>
-          <Magnetic><a href="#contact" className="hover:text-white transition-colors">Contacto</a></Magnetic>
-        </nav>
-
-        {/* Dynamic Magnetic Menu Button */}
         <Magnetic>
           <button
             onClick={() => setIsNavOpen(!isNavOpen)}
             aria-label="Abrir Menú"
-            className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#1C1D20] border border-white/20 text-white hover:bg-[#455CE9] hover:border-[#455CE9] transition-all duration-300 shadow-xl group"
+            className="relative flex items-center justify-center w-12 h-12 rounded-full bg-ink text-mint border border-ink shadow-lg"
           >
-            {isNavOpen ? (
-              <X className="w-6 h-6 transition-transform group-hover:rotate-90" />
-            ) : (
-              <Menu className="w-6 h-6 transition-transform group-hover:scale-110" />
-            )}
+            {isNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </Magnetic>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }

@@ -69,12 +69,12 @@ export default function Preloader({ onComplete }) {
       variants={slideUpVariants}
       initial="initial"
       exit="exit"
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#141517] text-white overflow-hidden pointer-events-auto"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-dark text-mint overflow-hidden pointer-events-auto"
     >
       {dimension.width > 0 && (
         <>
-          <div className="relative z-10 flex items-center gap-3 text-4xl sm:text-6xl font-syne font-extrabold tracking-tight">
-            <span className="inline-block w-3 h-3 bg-[#455CE9] rounded-full animate-ping"></span>
+          <div className="relative z-10 flex items-center gap-3 text-4xl sm:text-6xl font-display uppercase tracking-tight">
+            <span className="inline-block w-3 h-3 bg-brand rounded-full animate-ping"></span>
             <AnimatePresence mode="wait">
               <motion.span
                 key={index}
@@ -89,7 +89,7 @@ export default function Preloader({ onComplete }) {
             </AnimatePresence>
           </div>
 
-          <svg className="absolute top-0 w-full h-[calc(100%+300px)] pointer-events-none fill-[#141517]">
+          <svg className="absolute top-0 w-full h-[calc(100%+300px)] pointer-events-none fill-[#181818]">
             <motion.path
               variants={curveVariants}
               initial="initial"
