@@ -108,7 +108,7 @@ export default function Hero() {
             WORDPRESS & WOOCOMMERCE <span className="w-4 h-4 rounded-full bg-brand inline-block"></span>
             GRAN FORMATO & ACRÍLICOS <span className="w-4 h-4 rounded-full bg-brand inline-block"></span>
           </p>
-          <p ref={secondTextRef} className="pr-8 flex items-center gap-8 absolute left-full top-0">
+          <p ref={secondTextRef} className="pr-8 flex items-center gap-8">
             ESTERLIN MURILLO MENA <span className="w-4 h-4 rounded-full bg-brand inline-block"></span>
             DISEÑADOR GRÁFICO & WEB <span className="w-4 h-4 rounded-full bg-brand inline-block"></span>
             WORDPRESS & WOOCOMMERCE <span className="w-4 h-4 rounded-full bg-brand inline-block"></span>
