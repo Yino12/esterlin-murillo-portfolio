@@ -20,13 +20,13 @@ export default function ProjectModal({ modal, projects }) {
     const yMoveLabel = gsap.quickTo(cursorLabelRef.current, "top", { duration: 0.45, ease: "power3.out" });
 
     const handleMouseMove = (e) => {
-      const { pageX, pageY } = e;
-      xMoveContainer(pageX);
-      yMoveContainer(pageY);
-      xMoveCursor(pageX);
-      yMoveCursor(pageY);
-      xMoveLabel(pageX);
-      yMoveLabel(pageY);
+      const { clientX, clientY } = e;
+      xMoveContainer(clientX);
+      yMoveContainer(clientY);
+      xMoveCursor(clientX);
+      yMoveCursor(clientY);
+      xMoveLabel(clientX);
+      yMoveLabel(clientY);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -47,7 +47,7 @@ export default function ProjectModal({ modal, projects }) {
         variants={scaleAnimation}
         initial="initial"
         animate={active ? "open" : "closed"}
-        className="absolute z-30 h-[280px] w-[340px] sm:h-[320px] sm:w-[400px] rounded-2xl overflow-hidden pointer-events-none shadow-2xl bg-darkCard border border-brand/20"
+        className="fixed z-30 h-[280px] w-[340px] sm:h-[320px] sm:w-[400px] rounded-2xl overflow-hidden pointer-events-none shadow-2xl bg-darkCard border border-brand/20"
       >
         <div
           style={{ top: index * -100 + "%" }}
@@ -75,7 +75,7 @@ export default function ProjectModal({ modal, projects }) {
         variants={scaleAnimation}
         initial="initial"
         animate={active ? "open" : "closed"}
-        className="absolute z-40 w-20 h-20 rounded-full bg-brand text-ink flex items-center justify-center font-bold text-xs pointer-events-none shadow-xl border border-ink/20"
+        className="fixed z-40 w-20 h-20 rounded-full bg-brand text-ink flex items-center justify-center font-bold text-xs pointer-events-none shadow-xl border border-ink/20"
       >
       </motion.div>
 
@@ -84,7 +84,7 @@ export default function ProjectModal({ modal, projects }) {
         variants={scaleAnimation}
         initial="initial"
         animate={active ? "open" : "closed"}
-        className="absolute z-50 text-ink font-display text-xs uppercase tracking-wider pointer-events-none"
+        className="fixed z-50 text-ink font-display text-xs uppercase tracking-wider pointer-events-none"
       >
         Ver
       </motion.div>
