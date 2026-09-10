@@ -14,6 +14,19 @@ export default function Hero() {
 
   useEffect(() => {
     let animationFrameId;
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY) {
+        direction = -1; // scrolling down
+      } else if (currentScrollY < lastScrollY) {
+        direction = 1; // scrolling up
+      }
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     const animateMarquee = () => {
       if (xPercent < -100) {
@@ -32,7 +45,10 @@ export default function Hero() {
 
     animationFrameId = requestAnimationFrame(animateMarquee);
 
-    return () => cancelAnimationFrame(animationFrameId);
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
