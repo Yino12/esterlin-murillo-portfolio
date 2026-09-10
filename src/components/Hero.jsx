@@ -67,7 +67,7 @@ export default function Hero() {
           <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl uppercase tracking-tight leading-[0.9]">
             Esterlin <br />
             Murillo <br />
-            <span className="text-brand">Diseño &amp; Web</span>
+            <span className="text-brand">Diseño &amp; Web - IA</span>
           </h1>
         </div>
 
