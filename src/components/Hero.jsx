@@ -64,7 +64,7 @@ export default function Hero() {
             <span>Diseñador Gráfico &amp; Web · Colombia</span>
           </div>
 
-          <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl uppercase tracking-tight leading-[0.9]">
+          <h1 className="font-display text-[clamp(2.75rem,7vw,6rem)] uppercase tracking-tight leading-[0.9]">
             Esterlin <br />
             Murillo <br />
             <span className="text-brand">Diseño &amp; Web <span className="whitespace-nowrap">- IA</span></span>
